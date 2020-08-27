@@ -7,11 +7,20 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
+            "name": "7-Loops",
             "skipFiles": [
                 "<node_internals>/**"
             ],
             "program": "${workspaceFolder}/7-loops.js"
+        }, 
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "6-condicionais",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}/6-conditionals.js"
         }
     ]
 }
