@@ -1,8 +1,9 @@
-class ContaCorrente {
+export class ContaCorrente {
     #agencia;
+    cliente;
+
     // #saldo
     _saldo = 0;
-    cliente;
 
 
     depositar(valor) {
@@ -24,16 +25,9 @@ class ContaCorrente {
     getSaldo() {
         return this._saldo
     }
+
+    transferir(valor, conta) {
+        const valorSacado = this.sacar(valor)
+        return conta.depositar(valorSacado)
+    }
 }
-
-
-const ContaCorrente1 = new ContaCorrente();
-ContaCorrente1.agencia = `1001`;
-
-ContaCorrente1.depositar(145)
-
-const valorSacado = ContaCorrente1.sacar(-120)
-console.log(`Foram sacados R$${valorSacado}`)
-
-
-console.log(ContaCorrente1.getSaldo())
