@@ -1,15 +1,12 @@
 
 export class Cliente {
-    nome;
-    _cpf;
-
     constructor(nome, CPF) {
-        this.nome = nome;
-        this.cpf = CPF
+        this._nome = nome;
+        this._cpf = CPF
     }
 
     get nome() {
-        return this.nome;
+        return this._nome;
     }
 
     get CPF() {
@@ -17,7 +14,7 @@ export class Cliente {
     }
     
     set nome(novoNome) {
-        if (nome instanceof String) {
+        if (this.nome instanceof String) {
             this.nome = novoNome;
         }
     }
