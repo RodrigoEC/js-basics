@@ -1,33 +1,19 @@
 import { Cliente } from "./Cliente.js"
-import { ContaCorrente } from "./ContaCorrente.js"
-import { ContaPoupanca } from "./ContaPoupanca.js";
-import { Conta } from "./Conta.js"
-import { ContaSalario } from "./ContaSalario.js";
+import { Gerente } from "./funcionarios/Gerente.js"
+import { Diretor } from "./funcionarios/Diretor.js"
+import { SistemaAutenticacao } from "./SistemaAutenticacao.js"
 
-const cliente1 = new Cliente(`ricardo`, `034.256.242-84`);
-const ContaCorrente1 = new ContaCorrente(0, "1001", cliente1);
-const ContaCorrente2 = new ContaCorrente(0, "1002", cliente1);
 
-ContaCorrente1.depositar(145)
-// const valorSacado = ContaCorrente1.sacar(-120)
-// console.log(`Foram sacados R$${valorSacado}`)
+const diretorRodrigo = new Diretor("Rodrigo", 10000, 12345678900);
+diretorRodrigo.cadastraSenha("123456789")
+const gerenteRicardo = new Gerente("Ricardo", 5000, 12345678911);
+gerenteRicardo.cadastraSenha("123")
 
-console.log(cliente1)
-console.log('\n', ContaCorrente1)
-console.log(`\n- Saldo da conta corrente 01: R$${ContaCorrente1.saldo}`)
+const clienteAlice = new Cliente("Alice", 12345678922, "456")
+const estaLogado = SistemaAutenticacao.login(diretorRodrigo, "123456789");
+const gerenteLogado = SistemaAutenticacao.login(gerenteRicardo, "123");
+const clienteLogada = SistemaAutenticacao.login(clienteAlice, "456");
 
-const valorTransferido = ContaCorrente1.transferir(40, ContaCorrente2)
-
-console.log(`Foram transferidos R$${valorTransferido} para a conta corrente número 2`)
-console.log(`- Saldo da conta corrente 01: R$${ContaCorrente1.saldo}`)
-
-console.log('\n\n', cliente1, '\n\n', ContaCorrente1, '\n')
-console.log(Conta.numeroContas)
-
-const contaPoupanca1 = new ContaPoupanca(50, "1001", cliente1)
-console.log(`conta poupança:`, contaPoupanca1)
-console.log(Conta.numeroContas)
-
-const conta1 = new ContaSalario(cliente1)
-
-console.log(conta1)
+console.log(`${diretorRodrigo.nome}, logado?`, estaLogado)
+console.log(`${gerenteRicardo.nome}, logado?`, gerenteLogado)
+console.log(`${clienteAlice.nome}, logada?`, clienteLogada)
