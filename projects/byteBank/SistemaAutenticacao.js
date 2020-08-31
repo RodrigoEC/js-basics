@@ -2,6 +2,14 @@
 
 export class SistemaAutenticacao {
     static login(autenticavel, senha) {
-        return autenticavel.autenticaSenha(senha);
+        if (SistemaAutenticacao.ehAutenticavel(autenticavel)) {
+            return autenticavel.autenticaSenha(senha);
+        }
+        return false;
+    }
+
+    static ehAutenticavel(autenticavel) {
+        return 'autenticaSenha' in autenticavel && 
+            autenticavel.autenticaSenha instanceof Function;
     }
 }
